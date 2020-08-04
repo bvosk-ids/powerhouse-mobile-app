@@ -1,0 +1,48 @@
+<script section-content="page-title" type="text/ng-template" >
+    Time Sheet
+</script>
+
+
+<div apply-jq-mobile>
+
+    <div class="ui-grid-solo">
+        <button ng-click="RefreshData()">Refresh Time Sheet Data</button>
+    </div>
+    <br/>
+    <div ng-controller="TimeSheetWeekController" ng-show="$parent.shouldShowCurrentWeek" ng-init="loadData('currentWeek',true)">
+        <ul id="current-week-time-sheet-listing" data-role="listview">
+            <li ng-show="timeSheets.length == 0">You have no time sheets for this week</li>
+            <li ng-repeat="timeSheet in timeSheets|orderBy: '-ServiceDate'">
+                <a ng-click="$parent.gotoDetail(timeSheet, ivrHours, timeSheetDetails)">
+                    <span style="float: right">{{timeSheet.ServiceDate|date:'MM/dd/yyyy'}}</span>
+                    <p>Total Jobs: {{timeSheet.JobCount}}</p>
+                    <p>Total Time Worked: {{timeSheet.HoursWorked}} Hour(s)</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div ng-controller="TimeSheetWeekController" ng-hide="$parent.shouldShowCurrentWeek" ng-init="loadData('lastWeek')">
+        <ul id="last-week-time-sheet-listing" data-role="listview">
+            <li ng-show="timeSheets.length == 0">You have no time sheets for last week</li>
+            <li ng-repeat="timeSheet in timeSheets|orderBy: '-ServiceDate'">
+                <a ng-click="$parent.gotoDetail(timeSheet, ivrHours, timeSheetDetails)">
+                    <span style="float: right">{{timeSheet.ServiceDate|date:'MM/dd/yyyy'}}</span>
+                    <p>Total Jobs: {{timeSheet.JobCount}}</p>
+                    <p>Total Time Worked: {{timeSheet.HoursWorked}} Hour(s)</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<div section-content="footer-content">
+    <div apply-jq-mobile>
+        <div data-role="navbar">
+            <ul>
+                <li><a ng-class="{'ui-btn-active':shouldShowCurrentWeek}" ng-click="showCurrentWeek()" data-role="button" data-icon='calendar'>Current Week</a></li>
+                <li><a ng-class="{'ui-btn-active':!shouldShowCurrentWeek}" ng-click="showPastWeek()" data-role="button" data-icon='calendar'>Last Week</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

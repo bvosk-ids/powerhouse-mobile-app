@@ -1,0 +1,21 @@
+<script section-content="page-title" type="text/ng-template" >
+    Correction
+</script>
+
+
+<div apply-jq-mobile>
+
+    <div class="ui-grid-solo">
+        <select ng-model="poNumber" ng-options="detail.PoNumber as detail.PoNumber for detail in timeSheetDetails"></select>
+    </div>
+    Correction:
+    <br/>
+    <textarea ng-model="correctionNote" data-role="none" cols="30" rows="15">
+    </textarea>
+
+</div>
+
+
+<div section-content="footer-content">
+    <a id="submit-correction-button" class="ui-btn ui-icon-check ui-btn-icon-bottom" style="width:100%">Submit</a>
+</div>

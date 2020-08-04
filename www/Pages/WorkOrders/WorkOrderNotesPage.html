@@ -1,0 +1,25 @@
+<script section-content="page-title" type="text/ng-template" >
+    PO #: {{workOrder.PONumber}}
+</script>
+
+
+<div apply-jq-mobile>
+    <a data-role="button" href="#/WorkOrderAddNote">Add Note</a>
+    <ul id="work-order-notes-listview" data-role="listview" data-inset="true">
+        <li ng-show="workOrderNotes.length == 0">
+            There are no notes
+        </li>
+        <li ng-repeat="note in workOrderNotes">
+            <a ng-click="showAlert(note.Content)">
+               <p>{{note.Content|longtext:150}}</p>
+               <p>Input By: {{note.InputBy}}</p>
+               <p>Input Date: {{note.InputDate|date:'MM/dd/yyyy'}}</p>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+<div section-content="footer-content">
+
+</div>

@@ -1,0 +1,77 @@
+﻿<script section-content="page-title" type="text/ng-template">
+    New Order
+</script>
+
+
+<div apply-jq-mobile>
+    <form id="new-order-form">
+        <div class="ui-field-contain">
+            <label>Client</label>
+            <select id="new-client" name="new-client" ng-model="clientid" required>
+                <option value="0">Choose a client</option>
+                <option ng-repeat="client in clients" value="{{client.Id}}">{{client.Company}}</option>
+            </select>
+        </div>
+        <div class="ui-field-contain">
+            <label>Location</label>
+            <select id="new-location" name="new-location" ng-model="location" required>
+                <option value="">Choose a location</option>
+                <option ng-repeat="location in locations" value="{{location.Id}}">#{{location.Storenum}} - {{location.City}}, {{location.State}}</option>
+            </select>
+        </div>
+        <div class="ui-field-contain ng-hide">
+            <label>Category</label>
+            <input type="text" id="new-category" name="new-category" ng-model="category" readonly required/>
+        </div>
+        <div class="ui-field-contain">
+            <label>Order Type</label>
+            <select id="new-order-type" name="new-order-type" ng-model="ordertype" required>
+                <option value="">Choose a order type</option>
+                <option ng-repeat="ordertype in ordertypes" value="{{ordertype.Code}}">{{ordertype.Code}}</option>
+            </select>
+        </div>
+        <div class="ui-field-contain">
+            <label>Priority</label>
+            <select id="new-priority" name="new-priority" ng-model="priority" required>
+                <option value="">Choose a priority</option>
+                <option ng-repeat="priority in priorities" value="{{priority.Code}}">{{priority.Code}}</option>
+            </select>
+        </div>
+        <div class="ui-field-contain">
+            <label>Caller</label>
+            <input type="text" id="new-Caller" name="new-Caller" ng-model="Caller" required>
+        </div>
+        <div class="ui-field-contain">
+            <label>Inches</label>
+            <input type="number" id="new-Inches" name="new-Inches" ng-model="inch" required/>
+        </div>
+        <div class="error-message"></div>
+        <input name="submit-button" type="submit" value="Add" ng-disabled="!allowAdd">
+    </form>
+    
+    <div id="wo-add-order-popup" data-theme="a" class="ui-corner-all ui-popup ui-body-a ui-overlay-shadow" ng-show="!allowAdd" style="position: absolute; z-index:10000; width: 90%; height: 600px; top:75px">
+        <div class="ui-header" style="align-content: center">
+            <br/>
+            <div style="color: red">Warning</div>
+            <br/>
+        </div>
+        <br />
+        <div class="ui-body">
+            <br />
+            <div class="ui-body">I'm Sorry.</div>
+            <br />
+            <div class="ui-body">You are currently offline.</div>
+            <br />
+            <div class="ui-body">You cannot add work order offline.</div>
+            <br />
+            <div class="ui-body">Please check your connection.</div>
+            <br />
+            <div class="ui-body">Please go back and try again.</div>
+            <br />
+        </div>
+    </div>
+</div>
+
+<div section-content="footer-content">
+
+</div>

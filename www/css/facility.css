@@ -1,0 +1,134 @@
+/* Facil-ITy style */
+
+body{
+	font-family: "Lucida Grande", Helvetica, Arial,Verdana, sans-serif;
+}
+
+.MainLogo{
+	display: block;	
+	width: 110px !important;
+}
+
+#mySwipe{
+	max-width: 800px;
+	margin: 0 auto;
+	margin-left: -20px;
+	margin-top: -10px;
+}
+
+.MenuHeaderText{
+	float: left !important;
+	margin-top: 10px !important;
+	font-size: 18px !important;
+}
+
+.MenuHeaderIcon{
+	float: right !important;
+	margin-top: 3px !important;
+	margin-right: 5px !important;
+	padding: 7px !important;
+}
+
+.MenuHeaderTextMain{
+	float: left !important;
+	margin-top: 18px !important;
+	font-size: 18px !important;	
+}
+
+.MenuHeaderIconMain{
+	float: right !important;
+	margin-top: 3px !important;
+	margin-right: 5px !important;
+	padding-right: 7px !important;
+	padding-left: 7px !important;
+	padding-top: 13px !important;
+	padding-bottom: 13px !important;
+}
+
+.ui-navbar a{
+	border-radius: 0px !important;	
+}
+
+.ui-listview h2{
+	color: white !important;
+}
+
+.ui-collapsible h1{
+	color: white !important;
+}
+
+.container
+{
+	border: 1px solid #eeeeee;
+	border-radius: 5px;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	padding: 10px;
+}
+
+#work-order-details{
+	margin-top: 10px; 
+	margin-bottom: 70px; 	
+}
+
+#detail-grid .ui-grid-a>.ui-block-a{
+	width: 30%;
+}
+
+#detail-grid .ui-grid-a>.ui-block-b{
+	width: 70%;
+}
+
+.container
+{
+	/*background: white;*/
+	border: 1px solid #eeeeee;
+	border-radius: 5px;
+	margin-bottom: 5px;
+	/*margin-left: 10px;
+	margin-right: 10px;*/
+	margin-top: 5px;
+	padding: 10px;
+}
+
+/* iPhone 4/5 width specific */
+@media only screen and (min-width : 320px) and (max-width : 480px)  {
+	.MenuHeaderText{		
+		font-size: 13px !important;
+	}
+	
+	.MenuHeaderTextMain{
+		font-size: 13px !important;	
+	}
+
+	.dynamic_button {
+		min-width: 70px !important;
+	}
+
+	.MainLogoAbout {
+		display: block;
+		margin-top: 15px;
+		margin-left: auto;
+		margin-right: auto;
+		width: 260px;
+	}
+}
+
+@media only screen 
+and (min-width : 768px) 
+and (max-width : 1024px) 
+ { 
+	#mySwipe{
+		display:none;
+	}
+	
+	#iPadLandingpageImg{
+		display:block;
+	}
+	
+	#iPadLandingpageImg img {
+		height: 788px;
+	}
+
+}
+

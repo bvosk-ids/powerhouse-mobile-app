@@ -1,0 +1,33 @@
+<script section-content="page-title" type="text/ng-template" >
+    PO #: {{workOrder.PONumber}}
+</script>
+
+
+<div apply-jq-mobile>
+    <form id="new-part-form">
+        <div class="ui-field-contain">
+            <label>Part</label>
+            <select id="new-part" name="new-part" ng-model="newPart" ng-change="partChange()"  required>
+                <option value="">Choose a Part</option>
+                <option ng-repeat="part in Parts" value="{{part.ID}}">{{part.PartDesc}}</option>
+            </select>
+        </div>
+        <div class="ui-field-contain">
+            <label>Part Qty</label>
+            <input  type="number" name="qty-content" cols="25" rows="1" data-role="none" ng-model="qtyContent" required>
+            </input>
+        </div>
+        <div class="error-message"></div>
+        <input name="submit-button" type="submit" value="Add">
+    </form>
+    <div class="ui-grid-solo">
+        <blockquote id="inventoryMaxID"></blockquote>
+    </div>
+    <input  data-icon="delete" id="delete-button" ng-click="Delete()" name="delete-button" type="button" value="Delete" style="background: red; color: white;">
+</div>
+</div>
+
+
+<div section-content="footer-content">
+
+</div>

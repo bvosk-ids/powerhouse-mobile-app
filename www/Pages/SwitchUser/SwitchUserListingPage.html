@@ -1,0 +1,18 @@
+<script section-content="page-title" type="text/ng-template" >
+    Switch User
+</script>
+
+
+<div apply-jq-mobile>
+    <button ng-click="addUser()">Add User</button>
+
+    <ul id="user-listview" data-role="listview" data-inset="true" style="display: block">
+        <li ng-repeat="user in users">
+            <a ng-click="setActiveUser(user)">
+                <h2>Client Code: {{user.ClientCode}}</h2>
+                <p>User Name: {{user.UserName}}</p>
+            </a>
+        </li>
+    </ul>
+
+</div>

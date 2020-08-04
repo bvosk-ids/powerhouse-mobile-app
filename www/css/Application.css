@@ -1,0 +1,301 @@
+body {
+    height: 100% !important;
+}
+
+.auto-sync-disabled {
+    background-color: orange !important;
+    border-color: orange !important;
+}
+
+#content-wrapper {
+    display: table;
+    margin: 0 auto;
+    width: 100%;
+}
+
+#main-content {
+    /*display: table-cell;*/
+    text-align: center;
+    vertical-align: middle;
+}
+
+.error-message label {
+    color: #FFBB94;
+    height: 1em;
+    font-weight: bold;
+}
+
+#loaderDiv {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1100;
+    background-color: darkgray;
+    opacity: .8;
+}
+
+.ajax-loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -50px; /* -1 * image width / 2 */
+    margin-top: -50px; /* -1 * image height / 2 */
+    display: block;
+}
+
+.tab {
+    display: none;
+}
+
+
+/*.row {*/
+    /*margin-top: 5%;*/
+    /*margin-bottom: 5%;*/
+/*}*/
+
+
+.left-col, .right-col {
+    display: inline-block;
+    text-align: center;
+    width: 100px;
+    height: 100%;
+}
+
+.left-col {
+    margin-right: 5%;
+}
+
+.right-col {
+    margin-left: 5%;
+}
+
+.first-row .button {
+    width: 75px;
+    height: 75px;
+    background-size: 100% !important;
+    margin: 0 auto;
+}
+
+.row .button {
+    width: 50px;
+    height: 50px;
+    background-size: 100% !important;
+    margin: 0 auto;
+}
+
+.headerButton {
+    float: left;
+    margin-right: 5px!important;
+}
+
+
+.add-button-placeholder {
+    height: 44px;
+}
+
+.add-button {
+    position: fixed;
+    top: 44px;
+    z-index: 999;
+    width: 100%;
+    margin: 0 -1em;
+    text-align: center;
+}
+
+.add-button a {
+    margin: 0;
+}
+
+/*.ui-footer .ui-navbar .ui-btn {
+    line-height: 3.5em;
+} FMSync */
+
+#http-error-message-popup {
+    display: none;
+}
+
+.menuItem{
+    background: #666666; /* Old browsers */
+    background: -moz-linear-gradient(top,  #666666 1%, #999999 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#666666), color-stop(100%,#999999)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #666666 1%,#999999 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #666666 1%,#999999 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #666666 1%,#999999 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #666666 1%,#999999 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#666666', endColorstr='#999999',GradientType=0 ); /* IE6-9 */
+
+    padding-right: 15px;
+
+}
+
+.menuItemDiv{
+    position: absolute;
+    z-index: 0;
+    background-color: #666666;
+    height: 70px;
+    width: 97px;
+    text-align: right;
+    box-shadow: -1px 2px 1px grey;
+}
+
+.menuItemImg{
+   width: 20px;
+    padding-right: 15px;
+    padding-top: 5px; 
+}
+
+.menuItemLink{
+    color: white !important;
+    font-size: 13px;
+    text-decoration: none;
+    font-weight: normal !important;
+    margin: 0;
+}
+
+.MainText{
+    color:white;
+}
+
+.red-circle {
+    background-image: url(../images/WorkOrderListing/Circle_Red_24.png);
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+}
+
+.green-circle {
+    background-image: url(../images/WorkOrderListing/Circle_Green_24.png);
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+}
+
+#detail-grid .ui-block-a {
+    text-align: left;
+}
+
+#detail-grid .ui-grid-a {
+    border-bottom: 1px rgba(0,0,0,.1) solid;
+}
+
+#detail-grid .ui-block-b {
+    text-align: right;
+    /*font-weight: bold;*/
+}
+
+#detail-grid .ui-block-a {
+    font-weight: bold;
+}
+
+#work-order-details {
+    text-align: left;
+}
+
+.address {
+    text-align: right;
+}
+
+.ui-listview-inset {
+    margin-left: -1em !important;
+    margin-right: -1em !important;
+}
+
+.greenIcon {
+    background-image: linear-gradient(
+        rgba(0, 255, 0, 0.45),
+        rgba(0, 255, 0, 0.45)
+    );
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 255, 0, 0.45)), to(rgba(0, 255, 0, 0.45)));
+}
+
+.redIcon {
+    background-image: linear-gradient(
+        rgba(255, 0, 0, 0.45),
+        rgba(255, 0, 0, 0.45)
+    );
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 0, 0, 0.45)), to(rgba(255, 0, 0, 0.45)));
+}
+
+.yellowIcon {
+    background-image: linear-gradient(
+        rgba(255, 255, 0, 0.45),
+        rgba(255, 255, 0, 0.45)
+    );
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 0, 0.45)), to(rgba(255, 255, 0, 0.45)));
+}
+
+.checkIcon{
+    background-image: url(../images/Content-icons/check.png);
+    background-size: 100%;
+    content: '';
+}
+
+.xIcon {
+    background-image: url(../images/Content-icons/x.png);
+    background-size: 100%;
+    content: '';
+}
+
+.v-wrap{
+    height: 100%;
+    white-space: nowrap;
+    text-align: center;
+}
+.v-wrap:before{
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    width: 0;
+    /* adjust for white space between pseudo element and next sibling */
+    margin-right: -.25em;
+    /* stretch line height */
+    height: 100%;
+}
+.v-box{
+    display: inline-block;
+    vertical-align: middle;
+    white-space: normal;
+}
+
+#app-logo {
+    background: url(../images/fmsync_logo.png);
+    margin: 0 auto;
+    background-size: 100%;
+}
+
+ul[data-role="listview"] {
+    display: none;
+}
+
+#workOrderListingFooter {
+    position:fixed;
+    bottom:0;
+    width:100%;
+    left: 0px;
+    background: #222222;
+}
+
+.contact_button {
+    padding: 5px;
+    border-radius: 5px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.disabled {
+    background-color: #222222 !important;;
+    cursor: default;
+    pointer-events: none;
+    text-decoration: none;
+}
+
+.gettingLocation{
+    background-image: url(../images/Content-icons/GettingLocation.gif);
+    background-repeat: no-repeat;
+    width: 128px;
+    height: 30px;
+    display: inline-block;
+    margin-top: 50px;
+}

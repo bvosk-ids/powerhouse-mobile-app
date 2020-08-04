@@ -1,0 +1,112 @@
+<script section-content="page-title" type="text/ng-template" >
+    PO #: {{workOrder.PONumber}}
+</script>
+
+
+<div apply-jq-mobile>
+    <div id="checkout-popup" data-theme="a" class="ui-corner-all ui-popup ui-body-a ui-overlay-shadow" ng-show="shouldShowCheckOutForm" style="position: absolute;z-index: 999;width: 90%;">
+        <div style="padding:10px 20px;">
+            <h3>Check Out:</h3>
+            <a ng-click="CloseCheckOutForm()" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+            <fieldset data-role="controlgroup" >
+                <legend></legend>
+                <input type="radio" name="CheckOutRadio" id="radio-choice-h-2a" ng-model="checkOutOption" value="1" checked="checked">
+                <label for="radio-choice-h-2a">Checkout-Complete</label>
+                <input type="radio" name="CheckOutRadio" id="radio-choice-h-2b" ng-model="checkOutOption" value="2">
+                <label for="radio-choice-h-2b">Awaiting Parts</label>
+                <input type="radio" name="CheckOutRadio" id="radio-choice-h-2c" ng-model="checkOutOption" value="3">
+                <label for="radio-choice-h-2c">Return Trip</label>
+                <input type="radio" name="CheckOutRadio" id="radio-choice-h-2d" ng-model="checkOutOption" value="4">
+                <label for="radio-choice-h-2d">Pending Quote</label>
+            </fieldset>
+
+            <fieldset data-role="controlgroup" ng-show="ShouldShowStandBy">
+                <legend>Would you like to check into standby?</legend>
+                <input type="radio" id="yes-option" name="StandyByRadio" value="1" ng-model="shouldCheckIntoStandByNext">
+                <label for="yes-option">Yes</label>
+                <input type="radio" id="no-option" name="StandyByRadio" value="0" ng-model="shouldCheckIntoStandByNext">
+                <label for="no-option">No</label>
+            </fieldset>
+
+            <button id="checkOutButton" data-theme="b" data-icon="check" ng-click="CheckOut()">OK</button>
+        </div>
+    </div>
+    <div id="work-order-details" class="container ui-body-b">
+        <h2>{{workOrder.Company}} #{{workOrder.StoreNumber}}</h2>
+        <div class="address">
+            {{workOrder.Address1}}<br/>
+            <div ng-show="workOrder.Address2!=''">{{workOrder.Address2}}<br/></div>
+            {{workOrder.City}}, {{workOrder.State}} {{workOrder.Zip}}<br/>
+            {{workOrder.PhoneNumber}}
+        </div>
+        
+        <div style="text-align: center;">                        
+            <a href="#/WorkOrderContactInfo" data-role="button" class="contact_button dynamic_button" data-inline="true" >Contact</a>
+            <a href="#/WorkOrderLocationMap" data-role="button" class="contact_button dynamic_button" data-inline="true" >Map</a>
+            <a id="surveyButton" href="#" ng-click="onSurveyClick()" data-role="button" class="contact_button dynamic_button" data-inline="true" >Survey</a>
+        </div>
+
+        <div id="detail-grid">
+            <div class="ui-grid-a">
+                <div class="ui-block-a">Requested</div>
+                <div class="ui-block-b">{{workOrder.InputDate|date:'MM/dd/yy hh:mm a'}}</div>
+            </div>
+            <div class="ui-grid-a">
+                <div class="ui-block-a">Visit Date</div>
+                <div class="ui-block-b">{{workOrder.VisitDate|date:'MM/dd/yy hh:mm a'}}</div>
+            </div>
+            <div class="ui-grid-a">
+                <div class="ui-block-a">Priority</div>
+                <div class="ui-block-b">{{workOrder.Priority}}</div>
+            </div>
+            <div class="ui-grid-a">
+                <div class="ui-block-a">Category</div>
+                <div class="ui-block-b">{{workOrder.Category}}</div>
+            </div>
+            <div class="ui-grid-a">
+                <div class="ui-block-a">Order Type</div>
+                <div class="ui-block-b">{{workOrder.OrderType}}</div>
+            </div>
+            <div class="ui-grid-a">
+                <div class="ui-block-a">Status</div>
+                <div class="ui-block-b">{{workOrder.Status}}</div>
+            </div>
+            <div class="ui-grid-a">
+                <div class="ui-block-a">Client PO</div>
+                <div class="ui-block-b">{{workOrder.ClientPO}}</div>
+            </div>
+            <div class="ui-grid-a">
+                <div class="ui-block-a">Caller</div>
+                <div class="ui-block-b">{{workOrder.Caller}}</div>
+            </div>
+            <!--<div class="ui-grid-a">-->
+                <!--<div class="ui-block-a">DNE</div>-->
+                <!--<div class="ui-block-b">{{workOrder.NTE|currency:'$'}}</div>-->
+            <!--</div>-->
+            <div class="ui-grid-solo">
+                    <b>Scope</b>
+                    <blockquote ng-click="showAlert(workOrder.Scope)">{{workOrder.Scope|longtext:155}}</blockquote>
+                </div>
+            </div>
+        </div>
+
+        
+        <button ng-click="nextAction.Action()">{{nextAction.Label}}</button>
+        <button ng-click="SkipSignOffClicked()" ng-show="showSkipSignOff">Skip Sign Off</button>
+    </div>
+
+
+
+<div section-content="footer-content">
+    <div apply-jq-mobile>
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#/WorkOrderIVRs" data-role="button" data-icon='clock'>IVR ({{ivr.length}})</a></li>
+                <li><a ng-href="{{NotesAndPhotosDisabled ? '' : '#/WorkOrderNotes'}}" ng-class="{disabled: NotesAndPhotosDisabled}" data-role="button" data-icon='comment'>Notes ({{notes.length}})</a></li>
+                <li><a ng-href="{{NotesAndPhotosDisabled ? '' : '#/WorkOrderDocuments'}}" ng-class="{disabled: NotesAndPhotosDisabled}" data-role="button" data-icon='camera'>Photos ({{documents.length}})</a></li>
+                <li><a href="#/WorkOrderProofs" data-role="button" data-icon='grid'>Comp. Docs</a></li>
+                <li><a href="#/WorkOrderParts" data-role="button" data-icon='gear'>Parts</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

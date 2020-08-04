@@ -1,0 +1,38 @@
+<script section-content="page-title" type="text/ng-template" >
+
+</script>
+
+
+<div apply-jq-mobile style="margin: -1em -1em; overflow: auto; background: lightgray">
+
+
+    <div style="width: 200px;margin: 0 auto; margin-top: 1px; float:right; background: white;">
+        <div id="signature" class="ui-grid-solo" style="border: 1px solid #000000;">
+        </div>
+        <div id="control-buttons" style="position: absolute;left: -85px; -webkit-transform: rotate(90deg);font-weight: bold; width: 100%">
+            <div>Please Sign Above</div>
+            <div class="ui-grid-b" style="width: 100%;">
+                <div class="ui-block-a" ng-show="latestSignature == null">
+                    <button ng-click="saveSignature()">Submit</button>
+                </div>
+                <div class="ui-block-b" ng-show="latestSignature == null">
+                    <button ng-click="clearSignature()">Clear</button>
+                </div>
+                <div class="ui-block-a" ng-show="latestSignature != null" style="width: 66%">
+                    <button ng-click="resetSignature()">Sign Again</button>
+                </div>
+                <div class="ui-block-b" ng-show="latestSignature != null" style="width: 0%">
+
+                </div>
+                <div class="ui-block-c">
+                    <button ng-click="goBack()">Back</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div section-content="footer-content">
+
+</div>

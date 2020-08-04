@@ -1,0 +1,28 @@
+<script section-content="page-title" type="text/ng-template" >
+    Completion Docs
+</script>
+
+
+<div apply-jq-mobile>
+
+    <ul id="proofs" data-role="listview" data-inset="true">
+        <li ng-repeat="proof in workOrderProofs">
+            <a ng-click="gotoProofDetailPage(proof)">
+                <img ng-class="{checkIcon: proof.Status, xIcon: !proof.Status}" style="width:48px;height:48px;border-bottom-left-radius: 0;border-top-left-radius: 0;margin: 0 auto;position: absolute;top:16px;left:0" />
+                <h2>{{proof.Code}}</h2>
+                <p ng-show="proof.Code == 'Electronic Signature' && latestSignature != null">
+                    Signed By: {{latestSignature.Comment}}
+                </p>
+                <p ng-show="proof.Code == 'Electronic Signature' && latestSignature != null">
+                    On: {{latestSignature.InputDate|date:'MM/dd/yyyy hh:mm a'}}
+                </p>
+            </a>
+        </li>
+    </ul>
+
+</div>
+
+
+<div section-content="footer-content">
+
+</div>

@@ -1,0 +1,7 @@
+{
+    "name": "fmportal",
+    "type": "custom",
+    "integrations": {
+      "cordova": {}
+    }
+  }

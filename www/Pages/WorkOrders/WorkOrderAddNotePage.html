@@ -1,0 +1,28 @@
+<script section-content="page-title" type="text/ng-template" >
+    New Note
+</script>
+
+
+<div apply-jq-mobile>
+    <form id="new-note-form">
+        <div class="ui-field-contain">
+            <label>Note Type</label>
+            <select id="new-note-type" name="new-note-type" ng-model="newNoteType" required>
+                <option value="">Choose a Type</option>
+                <option ng-repeat="noteType in noteTypes" value="{{noteType.Code}}">{{noteType.Code}}</option>
+            </select>
+        </div>
+        <div class="ui-field-contain">
+            <label>Note</label>
+            <textarea name="note-content" cols="25" rows="10" data-role="none" ng-model="noteContent" required>
+            </textarea>
+        </div>
+        <div class="error-message"></div>
+        <input name="submit-button" type="submit" value="Add">
+    </form>
+</div>
+
+
+<div section-content="footer-content">
+
+</div>

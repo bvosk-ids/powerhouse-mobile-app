@@ -1,0 +1,54 @@
+<script section-content="page-title" type="text/ng-template" >
+    PO #: {{workOrder.PONumber}}
+</script>
+
+
+<div apply-jq-mobile>
+
+    <div id="checkout-popup" data-theme="a" class="ui-corner-all ui-popup ui-body-a ui-overlay-shadow" ng-show="shouldShowCheckOutForm" style="position: absolute;z-index: 999;width: 90%;">
+        <div style="padding:10px 20px;">
+            <h3>Check Out:</h3>
+            <a ng-click="CloseCheckOutForm()" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+            <fieldset data-role="controlgroup" >
+                <legend></legend>
+                <input type="radio" name="CheckOutRadio" id="radio-choice-h-2a" ng-model="checkOutOption" value="1" checked="checked">
+                <label for="radio-choice-h-2a">Checkout-Complete</label>
+                <input type="radio" name="CheckOutRadio" id="radio-choice-h-2b" ng-model="checkOutOption" value="2">
+                <label for="radio-choice-h-2b">Awaiting Parts</label>
+                <input type="radio" name="CheckOutRadio" id="radio-choice-h-2c" ng-model="checkOutOption" value="3">
+                <label for="radio-choice-h-2c">Return Trip</label>
+                <input type="radio" name="CheckOutRadio" id="radio-choice-h-2d" ng-model="checkOutOption" value="4">
+                <label for="radio-choice-h-2d">Pending Quote</label>
+            </fieldset>
+
+            <fieldset data-role="controlgroup" >
+                <legend>Would you like to check into standby?</legend>
+                <input type="radio" id="yes-option" name="StandyByRadio" value="1" ng-model="shouldCheckIntoStandByNext">
+                <label for="yes-option">Yes</label>
+                <input type="radio" id="no-option" name="StandyByRadio" value="0" ng-model="shouldCheckIntoStandByNext">
+                <label for="no-option">No</label>
+            </fieldset>
+
+            <button id="checkOutButton" data-theme="b" data-icon="check" ng-click="CheckOut()">OK</button>
+        </div>
+    </div>
+
+    <!-- <button ng-click="nextStatusAction.Action()">{{nextStatusAction.Label}}</button> -->
+
+    <ul id="ivr-listview" data-role="listview" data-inset="true" data-theme="a">
+        <li ng-show="workOrderIvrs.length == 0">
+            There are no IVR records.
+        </li>
+        <li ng-repeat="workOrderIvr in workOrderIvrs">
+            <h2>{{workOrderIvr.DispatchTime|date:'MM/dd/yyyy'}}</h2>
+            <p>D: {{workOrderIvr.DispatchTime|date:'hh:mm a'}} CI: {{workOrderIvr.CheckInTime|date:'hh:mm a'}} CO: {{workOrderIvr.CheckOutTime|date:'hh:mm a'}}</p>
+            <p>Input By: {{workOrderIvr.InputBy}}</p>
+        </li>
+    </ul>
+
+</div>
+
+
+<div section-content="footer-content">
+
+</div>

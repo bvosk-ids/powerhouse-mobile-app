@@ -1,0 +1,81 @@
+<script section-content="page-title" type="text/ng-template">
+    Work Orders
+</script>
+
+<div apply-jq-mobile>
+    <div class="ui-grid-solo">
+        <button ng-disabled="!canPullWOs" class="ui-btn ui-icon-refresh ui-btn-icon-right" id="pull-lastest-wo-button">{{pullButtonText}}</button>
+    </div>
+    <input data-type="search" placeholder="Search by PO#, City, State, ect." ng-model="filter">
+    <div class="gettingLocation" ng-show="GettingLocation"></div>
+    <ul id="work-order-listview" data-role="listview" style="padding-top: 15px">
+        <li style="white-space: normal" ng-show="workOrders.length == 0">
+            You currently have no work orders, try pressing the refresh button below to check again.
+        </li>
+        <li ng-repeat="workOrder in workOrdersPage">
+            <div style="font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; font-size: 14px; font-weight: bold; padding: .5em 1.143em; text-align: left; border-color: #333 /*{a-bar-border}*/; color: #fff /*{a-bar-color}*/; text-shadow: 0 /*{a-bar-shadow-x}*/ -1px /*{a-bar-shadow-y}*/ 1px /*{a-bar-shadow-radius}*/ #000 /*{a-bar-shadow-color}*/;">
+                <b>
+                    <div ng-class="!isEmergency(workOrder) ? 'green-circle' : 'red-circle'"></div>
+                    &nbsp;&nbsp;PO #:
+                </b>
+                {{workOrder.PONumber}}
+                <div class='ui-li-count'>{{workOrder.InputDate| fromNow}}</div>
+            </div>
+
+            <a ng-click="gotoWorkOrderDetail(workOrder)">
+                <p class='ui-li-aside ui-li-desc' style='top: 3px; right: 10px;'>
+                    <strong>
+                        {{workOrder.VisitDate|date:'MM/dd/yyyy hh:mm a'}}
+                    </strong>
+                </p>
+                <p class="ui-li-desc">
+                    <strong>{{workOrder.Company}} #{{workOrder.StoreNumber}}</strong>
+                </p>
+                <p class="ui-li-desc">
+                    <strong>{{workOrder.Address1}} {{workOrder.Address2}} {{workOrder.City}}, {{workOrder.State}}, {{workOrder.Zip}}</strong>
+                </p>
+                <p class="ui-li-desc">
+                    <strong>Client PO: {{workOrder.ClientPO}}</strong>
+                </p>
+                <!--<p class="ui-li-desc">-->
+                    <!--<strong>DNE $:</strong> {{workOrder.NTE|currency:'$'}} <strong>Caller:</strong> {{workOrder.Caller}}-->
+                <!--</p>-->
+                <p class="ui-li-desc">
+                    <strong>Category:</strong> {{workOrder.Category}}
+                </p>
+                <p class="ui-li-desc">
+                    <strong>Order Type:</strong> {{workOrder.OrderType}}
+                </p>
+                <p class="ui-li-desc">
+                    <strong>Priority:</strong> {{workOrder.Priority}} <strong>Status:</strong> {{workOrder.Status}}
+                </p>
+                <p class="ui-li-desc">
+                    <strong>Miles From Location:</strong> {{workOrder.MilesFromLocation}}
+                </p>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div id="footer-scroll-helper" style="height: 150px"></div>
+
+<div id="workOrderListingFooter" style="position:fixed;bottom:0;width:100%;left: 0px;">
+    <div class="ui-grid-solo">
+        <button ng-disabled="!canAddWOs" class="ui-btn ui-icon-plus ui-btn-icon-right" id="wo-add-order" ng-click="redirctToAddWork()">Add Order</button>
+    </div>
+    <div class="ui-grid-b">
+        <div class="ui-block-a">
+            <button class="ui-btn ui-shadow ui-corner-all ui-icon-minus" ng-disabled="currentPage <= 0" ng-click="decrementPage()">Prev</a>
+        </div>
+        <div class="ui-block-b">
+            <p style="text-align: center;">{{currentPage + 1}} / {{ numPages }}</p>
+            <br/>
+            <p>{{loadTime}}</p>
+        </div>
+        <div class="ui-block-c">
+            <button class="ui-btn ui-shadow ui-corner-all ui-icon-plus" ng-disabled="currentPage + 1 >= numPages" ng-click="incrementPage()">Next</a>
+        </div>
+    </div>
+</div>
+
+<div section-content="footer-content"></div>

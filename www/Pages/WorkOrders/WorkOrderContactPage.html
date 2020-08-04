@@ -1,0 +1,42 @@
+<script section-content="page-title" type="text/ng-template" >
+    Contacts
+</script>
+
+
+<div apply-jq-mobile>
+
+    <div id='contacts_container' style="margin-bottom:70px">
+
+        <div class='container ui-body-b' style='color:#333; text-shadow:none;'>
+            <div style='font-weight: bold;padding: 5px;font-size: 17px;'>{{workOrder.Type1}}</div>
+            <div><p class='description' style='padding-left:10px; padding-bottom:5px;'>{{workOrder.FullName1}}</p></div>
+            <div><p class='description' style='padding-left:10px; padding-bottom:5px;'><b>(P): </b>{{workOrder.Phone1}}</p></div>
+            <div><p class='description' style='padding-left:10px;'><b>(E): </b>{{workOrder.Email1}}</p></div>
+            <div>
+                <a class='call contact_button' href='tel:{{workOrder.Phone1}}' data-role='button' >Call</a>
+            </div>
+        </div>
+
+        <div class='container ui-body-b' style='color:#333; text-shadow:none;'>
+            <div style='font-weight: bold;padding: 5px;font-size: 17px;'>{{workOrder.Type2}}</div>
+            <div><p class='description' style='padding-left:10px; padding-bottom:5px;'>{{workOrder.FullName2}}</p></div>
+            <div><p class='description' style='padding-left:10px; padding-bottom:5px;'><b>(P): </b>{{workOrder.Phone2}}</p></div>
+            <div><p class='description' style='padding-left:10px;'><b>(E): </b>{{workOrder.Email2}}</p></div>
+            <div>
+                <a class='call contact_button' href='tel:{{workOrder.Phone2}}' data-role='button' >Call</a>
+            </div>
+        </div>
+
+        <div class='container ui-body-b' style='color:#333; text-shadow:none;'>
+            <div style='font-weight: bold;padding: 5px;font-size: 17px;'>{{workOrder.Type3}}</div>
+            <div><p class='description' style='padding-left:10px; padding-bottom:5px;'>{{workOrder.FullName3}}</p></div>
+            <div><p class='description' style='padding-left:10px; padding-bottom:5px;'><b>(P): </b>{{workOrder.Phone3}}</p></div>
+            <div><p class='description' style='padding-left:10px;'><b>(E): </b>{{workOrder.Email3}}</p></div>
+            <div>
+                <a class='call contact_button' href='tel:{{workOrder.Phone3}}' data-role='button' >Call</a>
+            </div>
+        </div>
+
+    </div>
+
+</div>

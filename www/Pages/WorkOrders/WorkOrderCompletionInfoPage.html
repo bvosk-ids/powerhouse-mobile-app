@@ -1,0 +1,43 @@
+<script section-content="page-title" type="text/ng-template" >
+    Completion Info
+</script>
+
+
+<div apply-jq-mobile class="v-wrap" style="margin: -1em -1em">
+    <form id="completion-info-form">
+        <div class="ui-grid-a">
+            <div class="ui-block-a">
+                <div class="ui-field-contain">
+                    <label>Date</label>
+                    <input id="completed-date" name="completed-date" type="date" ng-model="completedDate" required>
+                </div>
+            </div>
+            <div class="ui-block-b">
+                <div class="ui-field-contain">
+                    <label>Time</label>
+                    <input id="completed-time" name="completed-time" type="time" ng-model="completedTime" required>
+                </div>
+            </div>
+        </div>
+        <div class="ui-grid-a">
+            <div class="ui-block-a">
+                <button type="button" ng-click="setTimeToNow()">Now</button>
+            </div>
+            <div class="ui-block-b">
+                <button type="button" ng-click="clearTime()">Clear</button>
+            </div>
+        </div>
+
+        <div class="ui-field-contain">
+            <label>Comment</label>
+            <textarea name="comment-content" cols="25" rows="10" data-role="none" ng-model="completedComment">
+            </textarea>
+        </div>
+        <div class="error-message"></div>
+    </form>
+</div>
+
+
+<div section-content="footer-content">
+    <button class="ui-btn ui-icon-refresh ui-btn-icon-bottom" ng-click="submitForm()">Submit</button>
+</div>

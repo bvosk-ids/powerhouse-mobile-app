@@ -1,0 +1,40 @@
+<script section-content="page-title" type="text/ng-template" >
+    Store Stamp
+</script>
+
+
+<div apply-jq-mobile>
+
+    <div id="detail-grid" class="plain_text ui-body-b" style="text-align: left">
+        Please take a picture of the store stamp. You can stamp any piece of paper with the stamp as long as the stamp is recognizable.
+        <br/>
+        <br/>
+        <div class="ui-grid-a">
+            <div class="ui-block-a"># of Stamps on PO</div>
+            <div class="ui-block-b">{{poStoreStamps.length}}</div>
+        </div>
+        <div class="ui-grid-a">
+            <div class="ui-block-a"># of Stamps on WO</div>
+            <div class="ui-block-b">{{workOrderStoreStamps.length}}</div>
+        </div>
+    </div>
+    <br/>
+    <button ng-click="capturePhoto()">Take Stamp Photo</button>
+    <ul id="store-stamp-list-view" data-role="listview" data-inset="true">
+        <li ng-show="poStoreStamps.length == 0">
+            There are no stamps currently supplied
+        </li>
+        <li ng-repeat="stamp in poStoreStamps|orderBy:'-InputDate'">
+            <a ng-click="showDocument(stamp)">
+                <img ng-src="{{getThumbnailImageData(stamp)}}" style="width:80px;height:80px;position:absolute;top:0;bottom:0;margin:auto;border-bottom-left-radius: 0;border-top-left-radius: 0;" />
+                <p>On: {{stamp.InputDate|date:'MM/dd/yyyy hh:mm a'}}</p>
+                <p>By: {{stamp.InputBy}}</p>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+<div section-content="footer-content">
+
+</div>

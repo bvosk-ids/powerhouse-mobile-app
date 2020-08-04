@@ -1,0 +1,27 @@
+<script section-content="page-title" type="text/ng-template" >
+    PO #: {{workOrder.PONumber}}
+</script>
+
+
+<div apply-jq-mobile>
+    <button ng-click="capturePhoto()">Add Photo</button>
+    <ul id="work-order-docs-listview" data-role="listview" data-inset="true">
+        <li ng-show="workOrderDocuments.length == 0">
+            There are no documents
+        </li>
+        <li ng-repeat="document in workOrderDocuments">
+            <a ng-click="showDocument(document)">
+               <img ng-src="{{getThumbnailImageData(document)}}" style="width:80px;height:80px;position:absolute;top:0;bottom:0;margin:auto;border-bottom-left-radius: 0;border-top-left-radius: 0;" />
+               <h2>{{document.Comment|longtext:10}}</h2>
+               <p>On: {{document.InputDate|date:'MM/dd/yyyy hh:mm a'}}</p>
+               <p>Type: {{document.Type}}</p>
+               <p>By: {{document.InputBy}}</p>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+<div section-content="footer-content">
+
+</div>

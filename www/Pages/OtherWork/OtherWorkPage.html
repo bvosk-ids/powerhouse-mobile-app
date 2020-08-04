@@ -1,0 +1,78 @@
+<script section-content="page-title" type="text/ng-template" >
+    Other Work
+</script>
+
+
+<div apply-jq-mobile>
+
+    <!--<div ng-show="IsCheckedIntoPO()" style="z-index: 999; position: absolute; top:40px; left: 0;width: 100%;height: 100%;background-color: rgba(100,100,100,.5);">-->
+
+    <!--</div>-->
+
+    <div class="ui-grid-solo" ng-hide="IsCheckedIntoAnything()">Check In</div>
+    <div class="ui-grid-solo" ng-show="IsCheckedIntoAnything()">
+        <div ng-hide="IsCheckedIntoPO()">
+            Tap "{{otherWorkIvrStatus.WorkType}}" to Check Out
+            <br />
+            <br />
+            You've been checked into "{{otherWorkIvrStatus.WorkType}}" for {{otherWorkIvrStatus.WorkBeginDate| fromNow:'true'}}
+        </div>
+        <div ng-show="IsCheckedIntoPO()">You are currently checked into PO # {{CheckedInPoNumber}}</div>
+    </div>
+
+
+    <div class="ui-grid-a">
+        <div class="ui-block-a">
+            <button data-role="button" data-mini="true" ng-disabled="ShouldButtonBeDisabled('Drive Time')" ng-click="CheckIntoOtherWork('Drive Time')">
+                <img alt="" src='images/OtherWork/Games_48.png' />
+                <br/>
+                <span>Drive Time</span>
+            </button>
+        </div>
+        <div class="ui-block-b">
+            <button data-role="button" data-mini="true" ng-disabled="ShouldButtonBeDisabled('Vehicle')" ng-click="CheckIntoOtherWork('Vehicle')">
+                <img alt="" src='images/OtherWork/Wheel_48.png' />
+                <br/>
+                <span>Vehicle</span>
+            </button>
+        </div>
+    </div>
+    <div class="ui-grid-a" >
+        <div class="ui-block-a">
+            <button id="office_link" data-role="button" data-mini="true" ng-disabled="ShouldButtonBeDisabled('Office')" ng-click="CheckIntoOtherWork('Office')">
+                <img alt="" src='images/OtherWork/Company.png' style="height: 48px; width: 48px;" />
+                <br/>
+                <span>Office</span>
+            </button>
+        </div>
+        <div class="ui-block-b">
+            <button data-role="button" data-mini="true" ng-disabled="ShouldButtonBeDisabled('Stand By')" ng-click="CheckIntoOtherWork('Stand By')">
+                <img alt="" src='images/OtherWork/Answer_48.png' />
+                <br/>
+                <span>Stand By</span>
+            </button>
+        </div>
+    </div>
+    <div class="ui-grid-a" >
+        <div class="ui-block-a">
+            <button data-role="button" data-mini="true" ng-disabled="ShouldButtonBeDisabled('Admin')" ng-click="CheckIntoOtherWork('Admin')">
+                <img alt="" src='images/OtherWork/Waiter_48.png' />
+                <br/>
+                <span>Admin</span>
+            </button>
+        </div>
+        <div class="ui-block-b">
+            <button id="other_link" data-role="button" data-mini="true" ng-disabled="ShouldButtonBeDisabled('Other')" ng-click="CheckIntoOtherWork('Other')">
+                <img alt="" src='images/OtherWork/FAQ_48.png' />
+                <br/>
+                <span>Other</span>
+            </button>
+        </div>
+    </div>
+
+</div>
+
+
+<div section-content="footer-content">
+
+</div>

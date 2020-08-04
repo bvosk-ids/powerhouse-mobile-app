@@ -1,0 +1,26 @@
+<script section-content="page-title" type="text/ng-template" >
+    GPS Info
+</script>
+
+
+<div apply-jq-mobile>
+    <div class="ui-body-b">
+        <div id="detail-grid">
+            <div class="ui-grid-a">
+                <div class="ui-block-a">Is GPS Available?</div>
+                <div class="ui-block-b">
+                    <div ng-show="IsAvailable">
+                        <img src="images/GPSInfo/check.png">
+                    </div>
+                    <div ng-hide="IsAvailable">
+                        <img src="images/GPSInfo/x.png">
+                    </div>
+                </div>
+            </div>
+            <div class="ui-grid-a" ng-hide="IsAvailable">
+                <div class="ui-block-a">Error Message</div>
+                <div class="ui-block-b">{{Message}}</div>
+            </div>
+        </div>
+    </div>
+</div>

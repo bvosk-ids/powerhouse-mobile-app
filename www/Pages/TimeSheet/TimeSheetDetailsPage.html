@@ -1,0 +1,45 @@
+<script section-content="page-title" type="text/ng-template" >
+    {{timeSheet.ServiceDate|date:'MM/dd/yyyy'}}
+</script>
+
+
+<div apply-jq-mobile>
+
+
+   <div class="container ui-body-b" ng-repeat="detail in timeSheetDetails | filter:isSameServiceDate">
+       <span style="float: right">
+           {{detail.PoNumber}}
+       </span>
+       <h2>{{detail.Company}} {{detail.StoreNumber}}</h2>
+       <div style="white-space: pre-wrap;text-align: right; font-style: italic">
+           {{detail.Address1}}
+           {{detail.Address2}}
+           {{detail.City}}, {{detail.State}} {{detail.Zip}}
+           <a href="tel:{{detail.Phone}}">{{detail.Phone}}</a>
+       </div>
+       <div id="detail-grid">
+            <div class="ui-grid-a">
+                <div class="ui-block-a">Status</div>
+                <div class="ui-block-b">{{detail.Status}}</div>
+            </div>
+           <div class="ui-grid-a">
+               <div class="ui-block-a">Priority</div>
+               <div class="ui-block-b">{{detail.Priority}}</div>
+           </div>
+           <div class="ui-grid-a">
+               <div class="ui-block-a">Category</div>
+               <div class="ui-block-b">{{detail.Category}}</div>
+           </div>
+        </div>
+       <br/>
+       <h2>IVR Hours</h2>
+       <div ng-repeat="hour in ivrHours | filter:{PoNumber: detail.PoNumber}" style="font-size: .9em;text-align: left">
+           DI: {{hour.DispatchTime}}, CI: {{hour.CheckInTime}}, CO: {{hour.CheckOutTime}}
+       </div>
+    </div>
+
+</div>
+
+<div section-content="footer-content">
+    <a href="#/TimeSheetEmailCorrection"class="ui-btn ui-icon-check ui-btn-icon-bottom" style="width:100%">Email Correction</a>
+</div>

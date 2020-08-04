@@ -1,0 +1,42 @@
+<script section-content="page-title" type="text/ng-template" >
+    Settings
+</script>
+
+
+<div apply-jq-mobile>
+
+    <ul data-role="listview" data-theme="a" style="display: block">
+        <li>
+            <a ng-click="toggleAutoSync()">
+                <h2 ng-show="!autoSyncOnFlag">Enable Auto Sync</h2>
+                <h2 ng-show="autoSyncOnFlag">Disable Auto Sync</h2>
+            </a>
+        </li>
+        <li>
+            <a href="#/Profile">
+                <h2>My Profile</h2>
+            </a>
+        </li>
+        <li>
+            <a href="#/GPSInfo">
+                <h2>GPS Info</h2>
+            </a>
+        </li>
+        <li>
+            <a href="#/SwitchUser">
+                <h2>Switch User</h2>
+            </a>
+        </li>
+        <li>
+            <a href="#/SignOut">
+                <h2>Sign Out</h2>
+            </a>
+        </li>
+    </ul>
+
+</div>
+
+
+<div section-content="footer-content">
+
+</div>

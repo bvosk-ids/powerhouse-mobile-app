@@ -1,0 +1,69 @@
+<script section-content="page-title" type="text/ng-template" >
+    Information
+</script>
+
+
+<div apply-jq-mobile>
+
+    <div data-role="collapsible-set">
+        <div data-role="collapsible" data-theme="a">
+            <h1>Operations</h1>
+            <ul data-role="listview" >
+                <li ng-show="operationDocuments.length==0">There are no docs</li>
+                <li ng-repeat="doc in operationDocuments">
+                    <a ng-click="showDocument(doc)">
+                        <h1>{{doc.FileName}}</h1>
+                        <p>Input Date: {{doc.InputDate|date:'MM/dd/yyyy'}}</p>
+                        <p>Input By: {{doc.InputBy}}</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div data-role="collapsible" data-theme="a">
+            <h1>Executive</h1>
+            <ul data-role="listview">
+                <li ng-show="executiveDocuments.length==0">There are no docs</li>
+                <li ng-repeat="doc in executiveDocuments">
+                    <a ng-click="showDocument(doc)">
+                        <h1>{{doc.FileName}}</h1>
+                        <p>Input Date: {{doc.InputDate|date:'MM/dd/yyyy'}}</p>
+                        <p>Input By: {{doc.InputBy}}</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div data-role="collapsible" data-theme="a">
+            <h1>Human Resources</h1>
+            <ul data-role="listview">
+                <li ng-show="humanResourceDocuments.length==0">There are no docs</li>
+                <li ng-repeat="doc in humanResourceDocuments">
+                    <a ng-click="showDocument(doc)">
+                        <h1>{{doc.FileName}}</h1>
+                        <p>Input Date: {{doc.InputDate|date:'MM/dd/yyyy'}}</p>
+                        <p>Input By: {{doc.InputBy}}</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div data-role="collapsible" data-theme="a">
+            <h1>Accounting</h1>
+            <ul data-role="listview">
+                <li ng-show="accountingDocuments.length==0">There are no docs</li>
+                <li ng-repeat="doc in accountingDocuments">
+                    <a ng-click="showDocument(doc)">
+                        <h1>{{doc.FileName}}</h1>
+                        <p>Input Date: {{doc.InputDate|date:'MM/dd/yyyy'}}</p>
+                        <p>Input By: {{doc.InputBy}}</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+</div>
+
+
+<div section-content="footer-content">
+
+</div>

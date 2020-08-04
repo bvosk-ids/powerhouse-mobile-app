@@ -1,0 +1,20 @@
+CACHE MANIFEST
+# 2014-03-31 v1
+
+CACHE:
+#Controllers
+../Pages/LandingPage/LandingPageController.js
+
+../Pages/WorkOrders/WorkOrderDetailsController.js
+../Pages/WorkOrders/WorkOrderListingController.js
+../Pages/WorkOrders/WorkOrderNotesController.js
+
+#Pages
+../Pages/LandingPage/LandingPage.html
+
+../Pages/WorkOrders/WorkOrderDetailsPage.html
+../Pages/WorkOrders/WorkOrderListingPage.html
+../Pages/WorkOrders/WorkOrderNotesPage.html
+
+NETWORK:
+*

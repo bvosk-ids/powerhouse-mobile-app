@@ -1,0 +1,25 @@
+<script section-content="page-title" type="text/ng-template" >
+    PO #: {{workOrder.PONumber}}
+</script>
+
+
+<div apply-jq-mobile>
+    <a data-role="button" ng-click="OnAdd()">Add Part</a>
+    <ul id="parts-listview" data-role="listview" data-inset="true">
+        <li ng-show="workOrderParts.length == 0">
+            There are no parts
+        </li>
+        <li ng-repeat="part in workOrderParts">
+                <a ng-click="ClickPart(part)">
+                    <p>{{part.Partnum}} - {{part.PartDesc|longtext:150}}</p>
+                    <p>Quantity: {{part.Qty}}</p>
+                </a>
+        </li>
+    </ul>
+
+</div>
+
+
+<div section-content="footer-content">
+
+</div>
