@@ -3,7 +3,7 @@ window.FMSApplication.constant('appConfig',
         //ph live
         //http://localhost/IDS.FMSCloud.WebAPI/api/ sql3 test
         // baseApiUrl: 'http://localhost/IDS.FMSCloud.WebAPI.FacilITy/api/',
-        baseApiUrl: 'https://fmportal.powerhouseretail.com/MobileNew/api/',
+        baseApiUrl: 'https://fmportal.powerhouseretail.com/MobileTraining/api/',
         // baseApiUrl: 'http://fmsync.intelligentdata.com/WebAPI/api/',
         baseErrorLogUrl: 'http://fmsync.intelligentdata.com/ErrorLogging/api/',
         baseDocumentUrl: 'https://fmportal.powerhouseretail.com/MobileNew/Documents/Download/',
