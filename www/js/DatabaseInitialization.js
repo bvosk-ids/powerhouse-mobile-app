@@ -1,6 +1,7 @@
-window.dbInit = function (callback, injectedWebSqlRepository, injectedUserSessionDataService) {
+window.dbInit = function (callback, injectedWebSqlRepository, injectedUserSessionDataService, injectedRootScope) {
     var webSqlRepository = injectedWebSqlRepository || angular.element(document.body).injector().get("webSqlRepository");
     var userSessionDataService = injectedUserSessionDataService || angular.element(document.body).injector().get("userSessionDataService");
+    var $rootScope = injectedRootScope || angular.element(document.body).scope();
 
     function UpdateDBStaticData() {
         webSqlRepository.ExecuteSql("DELETE FROM WorkOrderDetailPulls").then(function () {
@@ -103,19 +104,16 @@ window.dbInit = function (callback, injectedWebSqlRepository, injectedUserSessio
         });
     });
 
-    // alert('register migration callbacks');
-
-    M.whenDone(UpdateDBStaticData)
+    M.whenDone(UpdateDBStaticData);    
+    M.whenDone(function() { $rootScope.$broadcast("startBackgroundOperations"); });
     M.whenDone(callback);
 
-    // alert('migration execute start');
     M.execute();
-    // alert('migration execute end');
 }
 
 // If we are not using Cordova and WebSQL is built in, initialize the DB now
 if (!window.cordova && openDatabase) {
-    window.FMSApplication.run(['appConfig', 'webSqlRepository', 'userSessionDataService', function (appConfig, webSqlRepository, userSessionDataService) {
-        window.dbInit(null, webSqlRepository, userSessionDataService);
+    window.FMSApplication.run(['webSqlRepository', 'userSessionDataService', '$rootScope',  function(webSqlRepository, userSessionDataService, $rootScope){
+        window.dbInit(null, webSqlRepository, userSessionDataService, $rootScope);
     }]);
 }
