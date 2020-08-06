@@ -102,8 +102,8 @@
         <div data-role="navbar">
             <ul>
                 <li><a href="#/WorkOrderIVRs" data-role="button" data-icon='clock'>IVR ({{ivr.length}})</a></li>
-                <li><a ng-href="{{NotesAndPhotosDisabled ? '' : '#/WorkOrderNotes'}}" ng-class="{disabled: NotesAndPhotosDisabled}" data-role="button" data-icon='comment'>Notes ({{notes.length}})</a></li>
-                <li><a ng-href="{{NotesAndPhotosDisabled ? '' : '#/WorkOrderDocuments'}}" ng-class="{disabled: NotesAndPhotosDisabled}" data-role="button" data-icon='camera'>Photos ({{documents.length}})</a></li>
+                <li><a href="#/WorkOrderNotes" ng-class="{disabled: NotesAndPhotosDisabled}" data-role="button" data-icon='comment'>Notes ({{notes.length}})</a></li>
+                <li><a href="#/WorkOrderDocuments" ng-class="{disabled: NotesAndPhotosDisabled}" data-role="button" data-icon='camera'>Photos ({{documents.length}})</a></li>
                 <li><a href="#/WorkOrderProofs" data-role="button" data-icon='grid'>Comp. Docs</a></li>
                 <li><a href="#/WorkOrderParts" data-role="button" data-icon='gear'>Parts</a></li>
             </ul>
