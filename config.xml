@@ -64,7 +64,9 @@
     <edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="merge">
       <string>Uses camera to capture photos related to work orders</string>
     </edit-config>
-    
+    <edit-config target="NSPhotoLibraryAddUsageDescription" file="*-Info.plist" mode="merge">
+      <string>Save Photo to Album</string>
+    </edit-config>    
   </platform>
 
 
