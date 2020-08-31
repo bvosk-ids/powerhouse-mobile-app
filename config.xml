@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget
-	id="com.facility.powerhouse"
-	version="2.9.5"
+	id="com.facility.svw"
+	version="1.0.0"
 	xmlns="http://www.w3.org/ns/widgets"
 	xmlns:gap="http://phonegap.com/ns/1.0"
 	xmlns:android = "http://schemas.android.com/apk/res/android">
-  <name>POWERHOUSE</name>
+  <name>Security Vault Works</name>
   <description>
-    POWERHOUSE application
+    Security Vault Works application
   </description>
   <author email="zaree@intelligentdata.com" href="http://intelligentdata.com">
     Intelligent Data Systems
