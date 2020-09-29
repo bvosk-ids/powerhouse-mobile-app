@@ -1,13 +1,13 @@
 window.FMSApplication.constant('appConfig',
     {
         //ph live
-        // baseApiUrl: 'https://fmportal.powerhouseretail.com/MobileNew/api/',
-        // baseErrorLogUrl: 'http://fmsync.intelligentdata.com/ErrorLogging/api/',
-        // baseDocumentUrl: 'https://fmportal.powerhouseretail.com/MobileNew/Documents/Download/',
-        // baseDocumentWithoutRedirectUrl: 'http://fmsync.intelligentdata.com/MobileNew/Documents/DownloadWithoutRedirect/',
-        // baseThumbnailDocumentUrl: 'https://fmportal.powerhouseretail.com/MobileNew/Documents/Thumbnail/',
-        // databaseName: 'FMSync.DB',
-        // databaseVersion: '1.0'
+        baseApiUrl: 'https://fmportal.powerhouseretail.com/MobileNew/api/',
+        baseErrorLogUrl: 'http://fmsync.intelligentdata.com/ErrorLogging/api/',
+        baseDocumentUrl: 'https://fmportal.powerhouseretail.com/MobileNew/Documents/Download/',
+        baseDocumentWithoutRedirectUrl: 'http://fmsync.intelligentdata.com/MobileNew/Documents/DownloadWithoutRedirect/',
+        baseThumbnailDocumentUrl: 'https://fmportal.powerhouseretail.com/MobileNew/Documents/Thumbnail/',
+        databaseName: 'FMSync.DB',
+        databaseVersion: '1.0'
 
         //PH training
         // baseApiUrl: 'https://fmportal.powerhouseretail.com/MobileTraining/api/',
@@ -19,13 +19,13 @@ window.FMSApplication.constant('appConfig',
         // databaseVersion: '1.0'
 
         //SVW training
-        baseApiUrl: 'https://thevault.svwinc.com/MobileTraining/api/',
-        baseErrorLogUrl: 'http://fmsync.intelligentdata.com/ErrorLogging/api/',
-        baseDocumentUrl: 'https://thevault.svwinc.com/MobileTraining/Documents/Download/',
-        baseDocumentWithoutRedirectUrl: 'https://thevault.svwinc.com/MobileTraining/Documents/DownloadWithoutRedirect/',
-        baseThumbnailDocumentUrl: 'https://thevault.svwinc.com/MobileTraining/Documents/Thumbnail/',
-        databaseName: 'FMSync.DB',
-        databaseVersion: '1.0'
+        // baseApiUrl: 'https://thevault.svwinc.com/MobileTraining/api/',
+        // baseErrorLogUrl: 'http://fmsync.intelligentdata.com/ErrorLogging/api/',
+        // baseDocumentUrl: 'https://thevault.svwinc.com/MobileTraining/Documents/Download/',
+        // baseDocumentWithoutRedirectUrl: 'https://thevault.svwinc.com/MobileTraining/Documents/DownloadWithoutRedirect/',
+        // baseThumbnailDocumentUrl: 'https://thevault.svwinc.com/MobileTraining/Documents/Thumbnail/',
+        // databaseName: 'FMSync.DB',
+        // databaseVersion: '1.0'
 
         // baseApiUrl: 'http://build1/PowerhouseMobileAPI/api/',
         // // baseApiUrl: 'https://fmportal.powerhouseretail.com/MobileNew/api/',
