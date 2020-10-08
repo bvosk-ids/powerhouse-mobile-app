@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget
-	id="com.facility.svw"
-	version="1.0.0"
+	id="com.facility.powerhouse"
+	version="2.9.6"
 	xmlns="http://www.w3.org/ns/widgets"
 	xmlns:gap="http://phonegap.com/ns/1.0"
 	xmlns:android = "http://schemas.android.com/apk/res/android">
-  <name>Security Vault Works</name>
+  <name>POWERHOUSE</name>
   <description>
-    Security Vault Works application
+    POWERHOUSE application
   </description>
   <author email="zaree@intelligentdata.com" href="http://intelligentdata.com">
     Intelligent Data Systems
@@ -65,10 +65,10 @@
       <string>Uses camera to capture photos related to work orders</string>
     </edit-config>
     <edit-config target="NSPhotoLibraryUsageDescription" file="*-Info.plist" mode="merge">
-      <string>Uses Photo Library</string>
+      <string>Permission to Save WO Photo to Album</string>
     </edit-config>
     <edit-config target="NSPhotoLibraryAddUsageDescription" file="*-Info.plist" mode="merge">
-      <string>Save Photo to Album</string>
+      <string>Permission to Save WO Photo to Album</string>
     </edit-config>
   </platform>
 
