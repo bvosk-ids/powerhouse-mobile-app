@@ -5,9 +5,9 @@ FMSApplication.controller('LoginPageController',['$scope', '$location', 'loginDa
             element.parent().siblings(".error-message").html(error);
         },
         submitHandler: function (form) {
-//            $scope.formData.clientCode = "Facil-IT";
-            // $scope.formData.clientCode = "fmportal";            
-            $scope.formData.clientCode = "svw";
+            // $scope.formData.clientCode = "Facil-IT";
+            $scope.formData.clientCode = "fmportal";        
+            // $scope.formData.clientCode = "svw";
             loginDataService.IsUserValid($scope.formData).then(function(response){
                 userSessionDataService.SetUser(response, $scope.formData.userName, $scope.formData.clientCode);
                 $location.path("WorkOrders");
