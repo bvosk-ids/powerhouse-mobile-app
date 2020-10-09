@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "private": true,
     "dependencies": {
-        "cordova-android": "9.0.0",
+        "cordova-android": "8.1.0",
         "cordova-ios": "6.0.0",
         "cordova-windows": "4.4.2"
     },
