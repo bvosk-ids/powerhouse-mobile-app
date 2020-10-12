@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget
-	id="com.facility.powerhouse"
+	id="com.facility.powerhousenew"
 	version="2.9.6"
 	xmlns="http://www.w3.org/ns/widgets"
 	xmlns:gap="http://phonegap.com/ns/1.0"
@@ -91,7 +91,7 @@
   <preference name="AutoHideSplashScreen" value="true" />
   <preference name="SplashScreenDelay" value="3000" />
   <preference name="disable-cursor" value="false" />
-  <preference name="android-targetSdkVersion" value="28" />
+  <preference name="android-targetSdkVersion" value="29" />
   <preference name="scheme" value="app" />
   <preference name="hostname" value="localhost" />
 
