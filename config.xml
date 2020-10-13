@@ -125,7 +125,9 @@
         <application android:usesCleartextTraffic="true" />
         <!-- <application android:debuggable="true" /> -->
     </edit-config>
-
+    <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application" xmlns:android="http://schemas.android.com/apk/res/android"> 
+        <application android:requestLegacyExternalStorage="true" /> 
+    </edit-config>
     <allow-intent href="market:*" />
     
     <!--
