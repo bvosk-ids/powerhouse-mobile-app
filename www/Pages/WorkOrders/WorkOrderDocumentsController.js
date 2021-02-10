@@ -21,7 +21,7 @@ FMSApplication.controller('WorkOrderDocumentsController',['$scope', 'localStorag
     $scope.capturePhoto = function() {
         cameraCaptureUtility.Capture().then(function(imageData){
             alertUtility.Prompt("Please Enter A Comment").then(function(response){
-                photoUploadDataService.Upload(imageData, "PHOTO", $scope.workOrder.OrderNumber, "order", response)
+                photoUploadDataService.Upload(imageData, "PHOTO", $scope.workOrder.DispatchId, "dispatch", response)
                     .then(function(){
                         $scope.UpdateDocuments();
                     });
