@@ -59,7 +59,7 @@
     <allow-intent href="itms:*" />
     <allow-intent href="itms-apps:*" />
     <edit-config target="NSLocationWhenInUseUsageDescription" file="*-Info.plist" mode="merge">
-      <string>Uses location to find surveys for nearby stores</string>
+      <string>Uses location for check-in/check-out to work orders</string>
     </edit-config>
     <edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="merge">
       <string>Uses camera to capture photos related to work orders</string>
