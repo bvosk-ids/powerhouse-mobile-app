@@ -4,15 +4,19 @@ FMSApplication.controller('WorkOrderDocumentsController',['$scope', 'localStorag
     $scope.workOrderDocuments = [];
 
     $scope.UpdateDocuments = function() {
-        workOrderDataService.GetDocuments($scope.workOrder.OrderNumber).then(function(response)
+        workOrderDataService.GetDocuments($scope.workOrder.OrderNumber).then(function(orderDocs)
         {
-            var workOrderDocuments = $filter("orderBy")(response, "-InputDate");
-            workOrderDocuments = workOrderDocuments.filter(function(el){
-               return el.Type.toLowerCase() != "stamp" && el.Type.toLowerCase() != "signature";
-            });
-            $scope.workOrderDocuments = workOrderDocuments;
+            workOrderDataService.GetDocuments($scope.workOrder.DispatchId, "dispatch").then(function(dispatchDocs){
+                bothDocs = orderDocs.concat(dispatchDocs);
+                
+                var workOrderDocuments = $filter("orderBy")(bothDocs, "-InputDate");
+                workOrderDocuments = workOrderDocuments.filter(function(el){
+                    return el.Type.toLowerCase() != "stamp" && el.Type.toLowerCase() != "signature";
+                });
 
-            window.RefreshListView("#work-order-docs-listview");
+                $scope.workOrderDocuments = workOrderDocuments;
+                window.RefreshListView("#work-order-docs-listview");
+            });
         });
     };
     $scope.UpdateDocuments();
