@@ -176,7 +176,7 @@ FMSApplication.controller('WorkOrderDetailsController',['$scope', 'localStorageD
                                     workOrderDataService.GetDocuments($scope.workOrder.OrderNumber, "order").then(function(orderDocResponse){
 
                                         orderDocResponse = orderDocResponse.filter(function(el){
-                                        return el.Type.toLowerCase() == "signature";
+                                            return el.Type.toLowerCase() == "signature";
                                         });
                             
                                         workOrderDataService.GetDocuments($scope.workOrder.DispatchId, "dispatch").then(function(dispatchDocs){
@@ -185,11 +185,7 @@ FMSApplication.controller('WorkOrderDetailsController',['$scope', 'localStorageD
                                                 return el.Type.toLowerCase() == "signature";
                                             });
 
-                                            localDispatchDocs = dispatchDocs.filter(function(el){
-                                                return el.Type.toLowerCase() != "signature";
-                                            });
-
-                                            localDocs = orderDocResponse.concat(localDispatchDocs);
+                                            localDocs = orderDocResponse.concat(localImages);
                                             
                                             //electronic signature exists, signoff satisfied
                                             if ( localImages.length > 0 || localDocs.length > 0) {
