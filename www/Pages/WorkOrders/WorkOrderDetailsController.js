@@ -22,9 +22,13 @@ FMSApplication.controller('WorkOrderDetailsController',['$scope', 'localStorageD
         workOrderDataService.GetIvrs($scope.workOrder.PONumber).then(function(response){
             $scope.ivr = response;
         });
-        workOrderDataService.GetDocuments($scope.workOrder.OrderNumber).then(function(response){
-            $scope.documents  = response.filter(function(el){
-                return el.Type.toLowerCase() != "stamp" && el.Type.toLowerCase() != "signature";
+        workOrderDataService.GetDocuments($scope.workOrder.OrderNumber).then(function(orderDocs){
+            workOrderDataService.GetDocuments($scope.workOrder.DispatchId, "dispatch").then(function(dispatchDocs){
+                var allDocs = orderDocs.concat(dispatchDocs);
+                
+                $scope.documents  = allDocs.filter(function(el){
+                    return el.Type.toLowerCase() != "stamp" && el.Type.toLowerCase() != "signature";
+                });
             });
         });
     }
@@ -173,18 +177,18 @@ FMSApplication.controller('WorkOrderDetailsController',['$scope', 'localStorageD
                         
                                     workOrderDataService.GetDocuments($scope.workOrder.DispatchId, "dispatch").then(function(dispatchDocs){
                         
-                                        signatures = dispatchDocs.filter(function(el){
+                                        localImages = dispatchDocs.filter(function(el){
                                             return el.Type.toLowerCase() == "signature";
                                         });
-                                        
-                                        otherDispatchDocs = dispatchDocs.filter(function(el){
+
+                                        localDispatchDocs = dispatchDocs.filter(function(el){
                                             return el.Type.toLowerCase() != "signature";
                                         });
 
-                                        otherDocs = orderDocResponse.concat(otherDispatchDocs);
+                                        localDocs = orderDocResponse.concat(localDispatchDocs);
                                         
                                         //electronic signature exists, signoff satisfied
-                                        if ( signatures.length > 0 || otherDocs.length > 0) {
+                                        if ( localImages.length > 0 || localDocs.length > 0) {
                                             $scope.nextAction = {
                                                 Label: 'Check Out',
                                                 Type: 'checkout',
@@ -193,11 +197,11 @@ FMSApplication.controller('WorkOrderDetailsController',['$scope', 'localStorageD
                                             }
                                         } else {
                                             
-                                            var localStamps = signatures.filter(function(el){
+                                            var localStamps = localImages.filter(function(el){
                                                 return el.Type.toLowerCase() == "stamp";
                                             });
                             
-                                            var docStamps = orderDocResponse.filter(function(el){
+                                            var docStamps = docResponse.filter(function(el){
                                                return el.Type.toLowerCase() == "stamp" && el.PONumber == $scope.workOrder.PONumber;
                                             });
                                             
