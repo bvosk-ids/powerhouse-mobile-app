@@ -171,14 +171,20 @@ FMSApplication.controller('WorkOrderDetailsController',['$scope', 'localStorageD
                                        return el.Type.toLowerCase() == "signature";
                                     });
                         
-                                    workOrderDataService.GetDocuments($scope.workOrder.DispatchId, "dispatch").then(function(localImages){
+                                    workOrderDataService.GetDocuments($scope.workOrder.DispatchId, "dispatch").then(function(dispatchDocs){
                         
-                                        localImages = localImages.filter(function(el){
+                                        signatures = dispatchDocs.filter(function(el){
                                             return el.Type.toLowerCase() == "signature";
                                         });
                                         
+                                        otherDispatchDocs = dispatchDocs.filter(function(el){
+                                            return el.Type.toLowerCase() != "signature";
+                                        });
+
+                                        otherDocs = orderDocResponse.concat(otherDispatchDocs);
+                                        
                                         //electronic signature exists, signoff satisfied
-                                        if ( localImages.length > 0 || orderDocResponse.length > 0) {
+                                        if ( signatures.length > 0 || otherDocs.length > 0) {
                                             $scope.nextAction = {
                                                 Label: 'Check Out',
                                                 Type: 'checkout',
@@ -187,11 +193,11 @@ FMSApplication.controller('WorkOrderDetailsController',['$scope', 'localStorageD
                                             }
                                         } else {
                                             
-                                            var localStamps = localImages.filter(function(el){
+                                            var localStamps = signatures.filter(function(el){
                                                 return el.Type.toLowerCase() == "stamp";
                                             });
                             
-                                            var docStamps = docResponse.filter(function(el){
+                                            var docStamps = orderDocResponse.filter(function(el){
                                                return el.Type.toLowerCase() == "stamp" && el.PONumber == $scope.workOrder.PONumber;
                                             });
                                             
