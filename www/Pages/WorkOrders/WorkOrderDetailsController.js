@@ -158,57 +158,41 @@ FMSApplication.controller('WorkOrderDetailsController',['$scope', 'localStorageD
                         //checked in, photos & signoff check
                         $scope.NotesAndPhotosDisabled = false;
                         workOrderDataService.GetDocuments($scope.workOrder.OrderNumber).then(function(docResponse){
-                            var currentDate = new Date(moment().toDate());
-                            currentDate.setHours(0,0,0,0);
-                            var todaysDocs  = docResponse.filter(function(el){
-                                var inputDate = new Date(el.InputDate);
-                                inputDate.setHours(0,0,0,0);
-                                //direct date comparison doesn't work, need to compare via getTime();
-                                return inputDate.getTime() == currentDate.getTime();
-                            });
-                            //if docs were put in today, skip proccing for photos
-                            if (todaysDocs.length > 0) {
+                            workOrderDataService.GetDocuments($scope.workOrder.DispatchId, "dispatch").then(function(dispatchDocResponse)
+                            {
+                                var docs = docResponse.concat(dispatchDocResponse);
 
-                                workOrderDataService.GetDocuments($scope.workOrder.OrderNumber, "order").then(function(orderDocResponse){
+                                var currentDate = new Date(moment().toDate());
+                                currentDate.setHours(0,0,0,0);
+                                var todaysDocs  = docs.filter(function(el){
+                                    var inputDate = new Date(el.InputDate);
+                                    inputDate.setHours(0,0,0,0);
+                                    //direct date comparison doesn't work, need to compare via getTime();
+                                    return inputDate.getTime() == currentDate.getTime();
+                                });
+                                //if docs were put in today, skip proccing for photos
+                                if (todaysDocs.length > 0) {
 
-                                    orderDocResponse = orderDocResponse.filter(function(el){
-                                       return el.Type.toLowerCase() == "signature";
-                                    });
-                        
-                                    workOrderDataService.GetDocuments($scope.workOrder.DispatchId, "dispatch").then(function(dispatchDocs){
-                        
-                                        localImages = dispatchDocs.filter(function(el){
-                                            return el.Type.toLowerCase() == "signature";
+                                    workOrderDataService.GetDocuments($scope.workOrder.OrderNumber, "order").then(function(orderDocResponse){
+
+                                        orderDocResponse = orderDocResponse.filter(function(el){
+                                        return el.Type.toLowerCase() == "signature";
                                         });
-
-                                        localDispatchDocs = dispatchDocs.filter(function(el){
-                                            return el.Type.toLowerCase() != "signature";
-                                        });
-
-                                        localDocs = orderDocResponse.concat(localDispatchDocs);
-                                        
-                                        //electronic signature exists, signoff satisfied
-                                        if ( localImages.length > 0 || localDocs.length > 0) {
-                                            $scope.nextAction = {
-                                                Label: 'Check Out',
-                                                Type: 'checkout',
-                                                Action: ShowCheckOutForm,
-                                                LatestIvr: latestIvr
-                                            }
-                                        } else {
-                                            
-                                            var localStamps = localImages.filter(function(el){
-                                                return el.Type.toLowerCase() == "stamp";
-                                            });
                             
-                                            var docStamps = docResponse.filter(function(el){
-                                               return el.Type.toLowerCase() == "stamp" && el.PONumber == $scope.workOrder.PONumber;
+                                        workOrderDataService.GetDocuments($scope.workOrder.DispatchId, "dispatch").then(function(dispatchDocs){
+                            
+                                            localImages = dispatchDocs.filter(function(el){
+                                                return el.Type.toLowerCase() == "signature";
                                             });
-                                            
-                                            var stamps = localStamps.concat(docStamps);
 
-                                            //stamp exists, signoff satisfied
-                                            if (stamps.length > 0) {
+                                            localDispatchDocs = dispatchDocs.filter(function(el){
+                                                return el.Type.toLowerCase() != "signature";
+                                            });
+
+                                            localDocs = orderDocResponse.concat(localDispatchDocs);
+                                            
+                                            //electronic signature exists, signoff satisfied
+                                            if ( localImages.length > 0 || localDocs.length > 0) {
                                                 $scope.nextAction = {
                                                     Label: 'Check Out',
                                                     Type: 'checkout',
@@ -216,30 +200,51 @@ FMSApplication.controller('WorkOrderDetailsController',['$scope', 'localStorageD
                                                     LatestIvr: latestIvr
                                                 }
                                             } else {
-                                                $scope.nextAction = {
-                                                    Label: 'Sign Off',
-                                                    Type: 'signoff',
-                                                    Action: function() {
-                                                        $location.path("/WorkOrderProofs");
-                                                    },
-                                                    LatestIvr: latestIvr
-                                                }
+                                                
+                                                var localStamps = localImages.filter(function(el){
+                                                    return el.Type.toLowerCase() == "stamp";
+                                                });
+                                
+                                                var docStamps = docResponse.filter(function(el){
+                                                return el.Type.toLowerCase() == "stamp" && el.PONumber == $scope.workOrder.PONumber;
+                                                });
+                                                
+                                                var stamps = localStamps.concat(docStamps);
 
-                                                $scope.showSkipSignOff = true;
+                                                //stamp exists, signoff satisfied
+                                                if (stamps.length > 0) {
+                                                    $scope.nextAction = {
+                                                        Label: 'Check Out',
+                                                        Type: 'checkout',
+                                                        Action: ShowCheckOutForm,
+                                                        LatestIvr: latestIvr
+                                                    }
+                                                } else {
+                                                    $scope.nextAction = {
+                                                        Label: 'Sign Off',
+                                                        Type: 'signoff',
+                                                        Action: function() {
+                                                            $location.path("/WorkOrderProofs");
+                                                        },
+                                                        LatestIvr: latestIvr
+                                                    }
+
+                                                    $scope.showSkipSignOff = true;
+                                                }
                                             }
-                                        }
+                                        });
                                     });
-                                });
-                            } else {
-                                $scope.nextAction = {
-                                    Label: 'Add Photo',
-                                    Type: 'photos',
-                                    Action: function() {
-                                        $location.path("/WorkOrderDocuments");
-                                    },
-                                    LatestIvr: latestIvr
+                                } else {
+                                    $scope.nextAction = {
+                                        Label: 'Add Photo',
+                                        Type: 'photos',
+                                        Action: function() {
+                                            $location.path("/WorkOrderDocuments");
+                                        },
+                                        LatestIvr: latestIvr
+                                    }
                                 }
-                            }
+                            })
                         });
                     }
                     else {
